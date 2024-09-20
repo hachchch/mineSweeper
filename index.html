@@ -23,11 +23,38 @@
         <source src="./sounds/爆発1.mp3" type="audio/mp3">
         効果音非対応
     </audio>
+    <audio id="click1" preload="auto">
+        <source src="./sounds/決定ボタンを押す50.mp3" type="audio/mp3">
+        効果音非対応低い
+    </audio>
+    <audio id="click2" preload="auto">
+        <source src="./sounds/決定ボタンを押す44.mp3" type="audio/mp3">
+        効果音非対応高い
+    </audio>
+    <audio id="cancel" preload="auto">
+        <source src="./sounds/キャンセル4.mp3" type="audio/mp3">
+        効果音非対応
+    </audio>
     <script type="text/javascript">
         function explosion() {
             document.getElementById('explosion').pause();
             document.getElementById('explosion').currentTime = 0;
             document.getElementById("explosion").play();
+        }
+        function click1() {
+            document.getElementById('click1').pause();
+            document.getElementById('click1').currentTime = 0;
+            document.getElementById("click1").play();
+        }
+        function click2() {
+            document.getElementById('click2').pause();
+            document.getElementById('click2').currentTime = 0;
+            document.getElementById("click2").play();
+        }
+        function cancel() {
+            document.getElementById('cancel').pause();
+            document.getElementById('cancel').currentTime = 0;
+            document.getElementById("cancel").play();
         }
     </script>
     <div class="large">
