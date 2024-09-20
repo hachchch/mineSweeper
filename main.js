@@ -165,6 +165,7 @@ for(const t of tiles){
     if(index2!=-1){
         if(tiles[index2].item=="mine"){
         tiles[index2].mines=0;
+        mines--;
         }
         tiles[index2].item="";
     }
