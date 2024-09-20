@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8 " />
+        <title>マインスイーパー</title>
+        <style>
+            .large{
+                font-size:40px;
+            }
+            .largeBox{
+                width:60px;
+                height:30px;
+                font-size:30px;
+            }
+            .yellow{
+                -webkit-text-stroke: 1px #bfbe5d;
+                color: #FFF;
+            }
+        </style>
+    </head>
+    <body>
+    <audio id="explosion" preload="auto">
+        <source src="./sounds/爆発1.mp3" type="audio/mp3">
+        効果音非対応
+    </audio>
+    <script type="text/javascript">
+        function explosion() {
+            document.getElementById('explosion').pause();
+            document.getElementById('explosion').currentTime = 0;
+            document.getElementById("explosion").play();
+        }
+    </script>
+    <div class="large">
+        <label id="startButton">スタート</label><br>
+        <div id="mapSelect">
+        爆弾の密度<input id="density" type="range" min="1" max="45" value="20" oninput="valueCheck()" /><t id="densityValue">20</t><br>
+        マップの大きさ<br>
+        [<label id="smallMap">10*10</label>]
+        [<label id="mediumMap" class="yellow">20*20</label>]
+        [<label id="largeMap">30*30</label>]
+        [<label id="customMap">カスタム</label>:<input class="largeBox" id="C1" type="number" value="50" />*<input class="largeBox" id="C2" type="number" value="50" />]<br>
+        スマホ向け操作<input type="checkbox" class="largeBox" onclick="phoneMode++;controleChange()" />
+        <hr>
+        操作説明
+        <t id="descr">
+        (PC向け)<br>
+        クリックで掘る。<br>
+        ctrl+クリックでしるしを付ける。
+        </t>
+        </div>
+    </div>
+    <div class="large gameSetting">
+    </div>
+    <canvas class="canvas" width="0" height="0"></canvas>
+    <script src="main.js" type="text/javascript"></script>
+    </body>
+</html>
