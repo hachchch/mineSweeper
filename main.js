@@ -118,14 +118,23 @@ for(const t of tiles){
     if(bool[0] && bool[1] && bool[2] && bool[3]){
         if(index[0]==-1){
             tiles[index[1]].item="";
+            mines--;
+            tiles[index[1]].mines=0;
         }else if(index[1]==-1){
             tiles[index[0]].item="";
+            mines--;
+            tiles[index[0]].mines=0;
         }else if(index[2]==-1){
             tiles[index[3]].item="";
+            mines--;
+            tiles[index[3]].mines=0;
         }else if(index[3]==-1){
             tiles[index[2]].item="";
+            mines--;
+            tiles[index[2]].mines=0;
         }else{
-            tiles[index[Math.round(Math.random()*3)]].mines+=1;
+            tiles[index[Math.round(Math.random()*3)]].mines=0;
+            mines--;
             tiles[index[Math.round(Math.random()*3)]].item="";
         }
     }
@@ -154,7 +163,7 @@ for(const t of tiles){
     }
     if(index2!=-1){
         if(tiles[index2].item=="mine"){
-        tiles[index2].mines+=1;
+        tiles[index2].mines=0;
         }
         tiles[index2].item="";
     }
@@ -241,7 +250,7 @@ startButton.addEventListener("click",(e)=>{
     gameSetting.innerHTML=`
     サイズ${mapSize[0]}x${mapSize[1]}<br>
     経過時間<t id="time">0</t>
-    爆弾の数${mines}個
+    地雷の数${mines}個
     マーク<t id="markamount">0</t>ヶ所
     `;
     startTime=Date.now();
@@ -397,5 +406,10 @@ function controleChange(){
         クリックで掘る。<br>
         ctrl+クリックでしるしを付ける。`;
     controle=0;
+    }
+}
+function allReveal(){
+    for(const t of tiles){
+        t.status="reveal";
     }
 }
