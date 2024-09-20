@@ -16,7 +16,8 @@ var win=false;
 var mapDensity=0;
 var marks=0;
 var dctime="";
-var tap=[-1,0]
+var tap=[-1,0];
+var hitpoint=1;
 var phoneMode=0;
 var controle=0;
 var startTime="";
@@ -304,6 +305,7 @@ canvas.addEventListener("click",(e)=>{
         if(t.status!="reveal" && collisionRect(t.x,t.y,size,size,mouse.x,mouse.y)){
             if(e.ctrlKey){
                 if(t.status=="hide"){
+                    click2();
                     t.status="marked";
                     marks++;
                     document.querySelector("#markamount").innerHTML=marks;
@@ -313,11 +315,13 @@ canvas.addEventListener("click",(e)=>{
                     <input type="button" id="clip" onclick="copyResult()" value="結果をクリップボードにコピーする" />`
                     }
                 }else if(t.status=="marked"){
+                    cancel();
                     t.status="hide";
                     marks--;
                     document.querySelector("#markamount").innerHTML=marks;
                 }
                 }else{
+                click1();
                 t.status="reveal";
             digup(t.id);
             if(t.item=="mine"){
@@ -345,6 +349,7 @@ canvas.addEventListener("click",(e)=>{
                 }
                 if(t.status=="hide"){
                     t.status="marked";
+                    click2();
                     marks++;
                     document.querySelector("#markamount").innerHTML=marks;
                     if(tiles.findIndex((e)=>e.item=="mine" && e.status!="marked")==-1 && marks==mines){
@@ -353,11 +358,13 @@ canvas.addEventListener("click",(e)=>{
                     <input type="button" id="clip" onclick="copyResult()" value="結果をクリップボードにコピーする" />`
                     }
                 }else if(t.status=="marked"){
+                    cancel();
                     t.status="hide";
                     marks--;
                     document.querySelector("#markamount").innerHTML=marks;
                 }
             if(tap[1]==2){
+                click1();
                 t.status="reveal";
             digup(t.id);
             if(t.item=="mine"){
