@@ -134,9 +134,10 @@ for(const t of tiles){
             mines--;
             tiles[index[2]].mines=0;
         }else{
-            tiles[index[Math.round(Math.random()*3)]].mines=0;
+            let seed=Math.round(Math.random()*3);
+            tiles[index[seed]].mines=0;
             mines--;
-            tiles[index[Math.round(Math.random()*3)]].item="";
+            tiles[index[seed]].item="";
         }
     }
     }
@@ -164,8 +165,8 @@ for(const t of tiles){
     }
     if(index2!=-1){
         if(tiles[index2].item=="mine"){
-        tiles[index2].mines=0;
         mines--;
+        tiles[index2].mines=0;
         }
         tiles[index2].item="";
     }
