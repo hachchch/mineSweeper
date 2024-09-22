@@ -349,7 +349,7 @@ canvas.addEventListener("click",(e)=>{
                 tap[0]=t.id;
                 tap[1]=0;
                 }
-                if(t.status=="hide"){
+                if(t.status=="hide" && tap[1]<2){
                     t.status="marked";
                     click2();
                     marks++;
@@ -359,7 +359,7 @@ canvas.addEventListener("click",(e)=>{
                         gameSetting.innerHTML+=`<hr>爆弾${mines}個${mapSize[0]}x${mapSize[1]}クリア！<br>
                     <input type="button" id="clip" onclick="copyResult()" value="結果をクリップボードにコピーする" />`
                     }
-                }else if(t.status=="marked"){
+                }else if(t.status=="marked" && tap[1]<2){
                     cancel();
                     t.status="hide";
                     marks--;
